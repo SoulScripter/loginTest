@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <div class="card">
+    <h4 class="card-head mt-2">Willkommen im TestProjekt</h4>
+    <div class="card-body">
+        {% if user is not null %}
+            <h4>{{ user.username }}</h4>
+            <table class="table">
+                <tr>
+                    <td>Email</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <td>Vorname</td>
+                    <td>{{ user.firstName }}</td>
+                </tr>
+                <tr>
+                    <td>Nachname</td>
+                    <td>{{ user.lastName }}</td>
+                </tr>
+                <tr>
+                    <td>Geburtsdatum</td>
+                    <td>{{ user.dateOfBirth | date('d M Y') }}</td>
+                </tr>
+                <tr>
+                    <td>Staatsbürgerschaft</td>
+                    <td>{{ user.nationality }}</td>
+                </tr>
+                <tr>
+                    <td>Telefonnummer</td>
+                    <td>{{ user.phone }}</td>
+                </tr>
+                <tr>
+                    <td>Anschrift</td>
+                    <td>{{ user.street }} {{ user.houseNumber }} </br>{{ user.postalCode }} {{ user.city }}</td>
+                </tr>
+            </table>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

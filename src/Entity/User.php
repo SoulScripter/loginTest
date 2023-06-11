@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -42,13 +43,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?\DateTimeImmutable $dateOfBirth = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $address = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $nationality = null;
 
     #[ORM\Column]
     private ?int $phone = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $street = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $city = null;
+
+    #[ORM\Column]
+    private ?int $postalCode = null;
+
+    #[ORM\Column]
+    private ?string $houseNumber = null;
 
     public function getId(): ?int
     {
@@ -82,11 +92,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return [];
     }
 
     public function setRoles(array $roles): static
@@ -168,18 +174,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAddress(): ?string
-    {
-        return $this->address;
-    }
-
-    public function setAddress(string $address): static
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
     public function getNationality(): ?string
     {
         return $this->nationality;
@@ -200,6 +194,54 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhone(int $phone): static
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getStreet(): ?string
+    {
+        return $this->street;
+    }
+
+    public function setStreet(string $street): static
+    {
+        $this->street = $street;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): static
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getPostalCode(): ?int
+    {
+        return $this->postalCode;
+    }
+
+    public function setPostalCode(int $postalCode): static
+    {
+        $this->postalCode = $postalCode;
+
+        return $this;
+    }
+
+    public function getHouseNumber(): ?string
+    {
+        return $this->houseNumber;
+    }
+
+    public function setHouseNumber(string $houseNumber): static
+    {
+        $this->houseNumber = $houseNumber;
 
         return $this;
     }
